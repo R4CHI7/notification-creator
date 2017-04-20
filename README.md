@@ -6,6 +6,8 @@ A small (emulated) utility for scheduling and tracking notifications using Djang
 Project setup
 -------------
 
+- Install `pip`, `virtualenv`, `rabbitmq-server`
+
 - Setup database:
 
     - Login to the root user using mysql shell.
@@ -32,6 +34,10 @@ Project setup
     `export DJANGO_SETTINGS_MODULE="notification_creator.settings.dev"`
 
 - Load the new settings in your shell using `source ~/.zshrc` or `source ~/.bashrc`.
+
+- Install dependencies:
+
+    `pip install -r requirements.txt`
 
 - Migrate the database:
 
