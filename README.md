@@ -43,6 +43,14 @@ Project setup
 
     `python manage.py migrate`
 
+- Run the test cases:
+
+    `python manage.py test`
+
+- Run the Celery worker:
+
+    `celery -A notification_creator worker -l info `
+
 - Check the setup using the following command:
 
     `python manage.py runserver`

@@ -4,7 +4,7 @@ from celery import shared_task
 from celery.utils.log import get_task_logger
 
 from .models import Notification
-from .utils import send_notification
+from .utils import sendNotification
 
 
 logger = get_task_logger(__name__)
@@ -25,9 +25,11 @@ def notify(notification_id):
             'content': notification.content,
             'image_url': notification.image_url
         }
-        result = send_notification(notification.user_query, notification_payload)
+        return_value = False
+        result = sendNotification(notification.user_query, notification_payload)
         if result:
             notification.status = 2
+            return_value = True
         else:
             notification.status = 3
     except Exception as e:
@@ -35,3 +37,4 @@ def notify(notification_id):
         notification.status = 3
     finally:
         notification.save()
+        return return_value

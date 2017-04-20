@@ -92,7 +92,10 @@ DATABASES = {
         'PORT': '3306',
         'OPTIONS': {
             'sql_mode': 'traditional',
-        }
+        },
+        'TEST': {
+            'NAME': 'test_notification_creator',
+        },
     }
 }
 

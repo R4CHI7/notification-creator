@@ -29,6 +29,7 @@ def IndexView(request):
         raise e
 
 
+@login_required
 @require_http_methods(["GET", "POST"])
 def CreateView(request):
     """
