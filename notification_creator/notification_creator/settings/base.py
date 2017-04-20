@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
     # Third Party apps.
     'tz_detect',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,5 @@ STATIC_URL = '/static/'
 LOGIN_URL = '/login/'
 
 LOGIN_REDIRECT_URL = '/notification/'
+
+CELERY_RESULT_BACKEND = 'django-db'

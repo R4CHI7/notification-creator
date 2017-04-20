@@ -56,7 +56,8 @@
 <script>
 $(function () {
   $('#id_send_at').datetimepicker({
-    format: 'DD/MM/YYYY HH:mm'
+    format: 'DD/MM/YYYY HH:mm',
+    minDate: new Date(),
   });
 });
 </script>
