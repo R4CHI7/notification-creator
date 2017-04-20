@@ -12,28 +12,36 @@
     </center>
   </div><!-- /.box-header -->
   <div class="box-body col-lg-6 col-lg-offset-3">
+    {% if form.errors %}
+      {% for error in form.errors %}
+      <div class="alert alert-danger alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <h4><i class="icon fa fa-ban"></i> Error!</h4>
+        {{ error|escape }}
+      </div>
+      {% endfor %}
+    {% endif %}
     <form role="form" method="post" action="/notification/create/">
-      {{ form.send_at.errors }}
       {% csrf_token %}
       <div class="form-group">
         <label>{{ form.header.label }}:</label>
-        <input id="{{ form.header.id_for_label }}" name="{{ form.header.html_name }}" type="text" class="form-control" title="Please enter 20-150 characters" placeholder="Enter notification header" pattern=".{20,150}" required>
+        <input id="{{ form.header.id_for_label }}" name="{{ form.header.html_name }}" type="text" class="form-control" value="{% if form.header.value %}{{ form.header.value }}{% endif %}" title="Please enter 20-150 characters" placeholder="Enter notification header" pattern=".{20,150}" required>
       </div>
       <div class="form-group">
         <label>{{ form.content.label }}:</label>
-        <input id="{{ form.content.id_for_label }}" name="{{ form.content.html_name }}" type="text" class="form-control" title="Please enter 20-300 characters" placeholder="Enter notification content" pattern=".{20,300}" required>
+        <input id="{{ form.content.id_for_label }}" name="{{ form.content.html_name }}" type="text" class="form-control" value="{% if form.content.value %}{{ form.content.value }}{% endif %}" title="Please enter 20-300 characters" placeholder="Enter notification content" pattern=".{20,300}" required>
       </div>
       <div class="form-group">
         <label>{{ form.image_url.label }}:</label>
-        <input id="{{ form.image_url.id_for_label }}" name="{{ form.image_url.html_name }}" type="url" class="form-control" placeholder="Enter image URL" required>
+        <input id="{{ form.image_url.id_for_label }}" name="{{ form.image_url.html_name }}" type="url" class="form-control" value="{% if form.image_url.value %}{{ form.image_url.value }}{% endif %}" placeholder="Enter image URL" required>
       </div>
       <div class="form-group">
         <label>{{ form.user_query.label }}:</label>
-        <textarea id="{{ form.user_query.id_for_label }}" name="{{ form.user_query.html_name }}" class="form-control" rows="3" placeholder="Enter user query"></textarea>
+        <textarea id="{{ form.user_query.id_for_label }}" name="{{ form.user_query.html_name }}" class="form-control" value="{% if form.user_query.value %}{{ form.user_query.value }}{% endif %}" rows="3" placeholder="Enter user query" required></textarea>
       </div>
       <div class="form-group">
         <label>{{ form.send_at.label }}:</label>
-        <input id="{{ form.send_at.id_for_label }}" name="{{ form.send_at.html_name }}" type='text' class="form-control" placeholder="Schedule the notification"/>
+        <input id="{{ form.send_at.id_for_label }}" name="{{ form.send_at.html_name }}" type='text' class="form-control" value="{% if form.send_at.value %}{{ form.send_at.value }}{% endif %}" placeholder="Schedule the notification" required>
       </div>
       <div class="box-footer">
         <button type="submit" class="btn btn-primary">Submit</button>

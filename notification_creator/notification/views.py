@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
@@ -20,13 +20,9 @@ def CreateView(request):
     if request.method == 'POST':
         form = NotificationForm(request.POST)
         if form.is_valid():
-            print 'valid'
             form.save()
-            return render(request, 'notification/create.html', {'form': form, 'success': True})
+            return redirect('index')
         else:
-            print form.errors
-            print 'invalid'
-            return render(request, 'notification/create.html', {'form': form, 'success': True})
-    print timezone.get_current_timezone()
+            return render(request, 'notification/create.html', {'form': form})
     form = NotificationForm
     return render(request, 'notification/create.html', {'form': form})
