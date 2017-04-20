@@ -17,13 +17,6 @@ class NotificationTest(TestCase):
         # Create a test user for logging in.
         User.objects.create_user('test', 'test123@gmail.com', 'testpassword')
 
-        # Create a notification object.
-        Notification.objects.create(header='Use Code TRANSFORM10 Today!',
-                                    content='10% OFF on your Recommended Plan',
-                                    image_url='http://i.imgur.com/0K40axT.jpg',
-                                    user_query='SELECT id FROM auth_user',
-                                    send_at=datetime.utcnow() + timedelta(minutes=2))
-
     def test_index(self):
         # Call the index URL without logging in.
         response = self.client.get('/notification/')
@@ -107,10 +100,23 @@ class NotificationTest(TestCase):
         self.assertEqual(response['Location'], '/notification/')
 
     def test_getNotificationCountByStatus(self):
+        # Create a notification object.
+        Notification.objects.create(header='Use Code TRANSFORM10 Today!',
+                                    content='10% OFF on your Recommended Plan',
+                                    image_url='http://i.imgur.com/0K40axT.jpg',
+                                    user_query='SELECT id FROM auth_user',
+                                    send_at=datetime.utcnow() + timedelta(minutes=2))
+
         # Test the helper method which returns number of notifications by status.
         count = getNotificationCountByStatus(1)
         self.assertEqual(count, 1)
 
     def test_task(self):
+        # Create a notification object.
+        Notification.objects.create(header='Use Code TRANSFORM10 Today!',
+                                    content='10% OFF on your Recommended Plan',
+                                    image_url='http://i.imgur.com/0K40axT.jpg',
+                                    user_query='SELECT id FROM auth_user',
+                                    send_at=datetime.utcnow() + timedelta(minutes=2))
         result = notify.apply_async((1,))
         self.assertTrue(result)
