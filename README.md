@@ -54,3 +54,15 @@ Project setup
 - Check the setup using the following command:
 
     `python manage.py runserver`
+
+
+External Packages/References
+----------------------------
+
+- For UI, [AdminLTE](https://almsaeedstudio.com/themes/AdminLTE/index2.html) is used which depends on Bootstrap.
+
+- [Celery integration with Django](http://docs.celeryproject.org/en/latest/django/first-steps-with-django.html)
+
+- Enabling timezone support for Django is done via [django-tz-detect](https://github.com/adamcharnock/django-tz-detect)
+
+- Date time picker for the create form is picked from [Bootstrap Date Time Picker](https://eonasdan.github.io/bootstrap-datetimepicker/)
