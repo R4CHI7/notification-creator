@@ -28,5 +28,9 @@ urlpatterns = [
     # Logout URL.
     url(r'^logout/', auth_views.logout_then_login, name='logout'),
 
+    # Notification Dashboard URLs.
     url(r'^notification/', include('notification.urls')),
+
+    # django_tz_detect URLs.
+    url(r'^tz_detect/', include('tz_detect.urls')),
 ]

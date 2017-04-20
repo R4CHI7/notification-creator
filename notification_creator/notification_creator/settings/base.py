@@ -39,8 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Notification Sender apps.
+    # Notification Creator apps.
     'notification',
+
+    # Third Party apps.
+    'tz_detect',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +54,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'tz_detect.middleware.TimezoneMiddleware',
 ]
 
 ROOT_URLCONF = 'notification_creator.urls'
