@@ -1,0 +1,55 @@
+{% extends "notification/base.html" %}
+
+{% block title %}Create{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+{% endblock %}
+{% block content %}
+<div class="box box-info">
+  <div class="box-header">
+    <center>
+      <h3 class="box-title">Create Notification</h3>
+    </center>
+  </div><!-- /.box-header -->
+  <div class="box-body col-lg-6 col-lg-offset-3">
+    <form role="form" method="post" action="/notification/create/">
+      {{ form.send_at.errors }}
+      {% csrf_token %}
+      <div class="form-group">
+        <label>{{ form.header.label }}:</label>
+        <input id="{{ form.header.id_for_label }}" name="{{ form.header.html_name }}" type="text" class="form-control" title="Please enter 20-150 characters" placeholder="Enter notification header" pattern=".{20,150}" required>
+      </div>
+      <div class="form-group">
+        <label>{{ form.content.label }}:</label>
+        <input id="{{ form.content.id_for_label }}" name="{{ form.content.html_name }}" type="text" class="form-control" title="Please enter 20-300 characters" placeholder="Enter notification content" pattern=".{20,300}" required>
+      </div>
+      <div class="form-group">
+        <label>{{ form.image_url.label }}:</label>
+        <input id="{{ form.image_url.id_for_label }}" name="{{ form.image_url.html_name }}" type="url" class="form-control" placeholder="Enter image URL" required>
+      </div>
+      <div class="form-group">
+        <label>{{ form.user_query.label }}:</label>
+        <textarea id="{{ form.user_query.id_for_label }}" name="{{ form.user_query.html_name }}" class="form-control" rows="3" placeholder="Enter user query"></textarea>
+      </div>
+      <div class="form-group">
+        <label>{{ form.send_at.label }}:</label>
+        <input id="{{ form.send_at.id_for_label }}" name="{{ form.send_at.html_name }}" type='text' class="form-control" placeholder="Schedule the notification"/>
+      </div>
+      <div class="box-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+{% block footer %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script>
+$(function () {
+  $('#id_send_at').datetimepicker({
+    format: 'DD/MM/YYYY HH:mm'
+  });
+});
+</script>
+{% endblock %}

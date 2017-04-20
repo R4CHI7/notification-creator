@@ -1,0 +1,73 @@
+{% extends "notification/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="box box-solid">
+      <div class="boxbody">
+        <center>
+          <div class="col-lg-3 col-lg-offset-1">
+            <div class="small-box bg-green">
+              <div class="inner">
+                <h3>6</h3>
+                <p>Notifications Sent</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-check"></i>
+              </div>
+              <a href="/dashboard/completed/" class="small-box-footer">
+                View All <i class="fa fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+        </center>
+
+        <center>
+          <div class="col-lg-3 col-lg-offset-1">
+            <!-- small box -->
+            <div class="small-box bg-orange">
+              <div class="inner">
+                <h3>5</h3>
+                <p>Notifications Scheduled</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-play"></i>
+              </div>
+              <a href="/dashboard/active/" class="small-box-footer">
+                View All <i class="fa fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+        </center>
+
+        <center>
+          <div class="col-lg-3 col-lg-offset-1">
+            <div class="small-box bg-red">
+              <div class="inner">
+                <h3>6</h3>
+                <p>Notifications Failed</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-times"></i>
+              </div>
+              <a href="/dashboard/completed/" class="small-box-footer">
+                View All <i class="fa fa-arrow-circle-right"></i>
+              </a>
+            </div>
+          </div>
+        </center>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-3 col-md-offset-5">
+      <a href="/notification/create">
+        <button type="button" class="btn btn-block btn-primary">Create New Notification</button>
+      </a>
+    </div>
+</div>
+{% endblock %}
