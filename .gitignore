@@ -1,0 +1,12 @@
+# Virtual Environment
+env/
+
+# Python Files
+*.pyc
+
+# Log files
+*.log
+
+# Django settings files.
+dev.py
+production.py
