@@ -23,13 +23,13 @@ Project setup
 
     - Select the database using:
 
-        `USE notification_sender;`
+        `USE notification_creator;`
 
 - Create a file named `dev.py` or `production.py` in the `notification_sender/settings` directory and copy variables from `base.py` which need to be modified.
 
 - Add the following line to your `.bashrc` or `.zshrc` or equivalent shell configuration file:
 
-    `export DJANGO_SETTINGS_MODULE="notification_sender.settings.dev"`
+    `export DJANGO_SETTINGS_MODULE="notification_creator.settings.dev"`
 
 - Load the new settings in your shell using `source ~/.zshrc` or `source ~/.bashrc`.
 
